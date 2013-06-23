@@ -1,0 +1,50 @@
+{% extends "webradio/base.html" %}
+{% load url from future %}
+
+{% block content %}
+<div class="row">
+  <div class="large-8 columns panel" style="text-align: center;">
+      <p style="font-size: x-small; margin:0px;">Now playing</p>
+      <p id="id_now_playing" style="font-size: large; margin:0px;">Now Playing Information</p>
+      <p id="id_station" style="font-size: small; margin:0px;">* {{player.get_current_station.name}} *</p>
+  </div>
+  <div class="large-4 columns" style="white-space: nowrap; text-align: center;">
+      <a href="{% url 'webradio.views.control_station_previous' %}"><img src="{{STATIC_URL}}webradio/img/64x64/station_previous.png" /></a>
+      <a href="{% url 'webradio.views.control_play_pause' %}"><img id="id_img_playpause" src="{{STATIC_URL}}webradio/img/64x64/media-playback-start.png" alt="Play/Pause" /></a>
+      <a href="{% url 'webradio.views.control_station_next' %}"><img src="{{STATIC_URL}}webradio/img/64x64/station_next.png" /></a>
+  </div>
+</div>
+
+{% endblock content %}
+
+{% block script %}
+<script>
+    function updateNowPlaying(){       
+        $.getJSON('{% url 'webradio.views.control_get_info' %}', function(data) {
+            $('#id_now_playing').text(data.title);
+            $('#id_station').text('* ' + data.station + ' *');
+            
+            if (data.is_playing == true) {
+                $('#id_img_playpause').attr('src', '{{STATIC_URL}}webradio/img/64x64/media-playback-pause.png');
+            } else {
+                $('#id_img_playpause').attr('src', '{{STATIC_URL}}webradio/img/64x64/media-playback-start.png');
+            }
+        });
+    }
+    
+    //Update information when page loads
+    $(document).ready(updateNowPlaying());
+    
+    //This is delayed update is perfomed so stream information
+    // becomes available faster after changing streams. 
+    setTimeout(function() {
+      updateNowPlaying();
+    }, 1000);
+    
+    //Update information every 5 seconds
+    setInterval(function() {
+       updateNowPlaying();
+    }, 5000 );
+    
+</script>
+{% endblock script %}

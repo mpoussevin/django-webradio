@@ -1,0 +1,33 @@
+{% extends "webradio/base.html" %}
+{% load url from future %}
+
+{% block content %}
+<div class="row">
+ <div class="large-12 columns" style="text-align: center;">
+ <div class="section-container auto" data-section>
+  <section class="section">
+    <p class="title"><a href="#panel1">All</a></p>
+    <div class="content">
+      <ul style="text-align: left; margin-left:20px;">
+          {% for station in stations %}
+           <li><a href="{% url 'webradio.views.control_play_station' station.id %}">{{station.name}}</a></li>
+          {% endfor %}
+      </ul>
+    </div>
+  </section>
+  {% for category in categories %}
+  <section class="section">
+    <p class="title"><a href="#panel1">{{category.name}}</a></p>
+    <div class="content">
+      <ul style="text-align: left; margin-left:20px;">
+          {% for station in category.get_stations %}
+           <li><a href="{% url 'webradio.views.control_play_station' station.id %}">{{station.name}}</a></li>
+          {% endfor %}
+      </ul>
+    </div>
+  </section>
+  {% endfor %}
+  </div>
+ </div>
+</div>
+{% endblock content %}
