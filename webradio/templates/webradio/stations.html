@@ -9,7 +9,7 @@
     <div class="content">
       <ul style="text-align: left; margin-left:20px;">
           {% for station in stations %}
-           <li><a href="{% url 'webradio.views.control_play_station' station.id %}">{{station.name}}</a></li>
+           <li><a href="{% url "webradio:control_play_station" station.id %}">{{station.name}}</a></li>
           {% endfor %}
       </ul>
     </div>
@@ -20,7 +20,7 @@
     <div class="content">
       <ul style="text-align: left; margin-left:20px;">
           {% for station in category.get_stations %}
-           <li><a href="{% url 'webradio.views.control_play_station' station.id %}">{{station.name}}</a></li>
+           <li><a href="{% url "webradio:control_play_station" station.id %}">{{station.name}}</a></li>
           {% endfor %}
       </ul>
     </div>

@@ -7,7 +7,7 @@ urlpatterns = [
     path('', views.index, name='home'),
     path('stations/', views.stations, name='stations'),
     path('player/', views.player, name='player'),
-    path('controls/play/(\d+)/', views.control_play_station,
+    path('controls/play/<int:station_id>/', views.control_play_station,
          name='control_play_station'),
     path('controls/playpause/', views.control_play_pause,
          name='control_play_pause'),
