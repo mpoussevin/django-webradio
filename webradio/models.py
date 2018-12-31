@@ -32,7 +32,8 @@ class Station(models.Model):
     """
     name = models.CharField(max_length=100, unique=True)
     playlist = models.URLField(unique=True)
-    category = models.ForeignKey(Category, blank=True, null=True)
+    category = models.ForeignKey(
+        Category, blank=True, null=True, on_delete=models.CASCADE)
 
     class Meta:
         ordering = ['name']
@@ -111,7 +112,7 @@ class Stream(models.Model):
     name = models.CharField(max_length=100, default='')
     url = models.URLField(unique=True)
     default = models.BooleanField(default=False)
-    station = models.ForeignKey(Station)
+    station = models.ForeignKey(Station, on_delete=models.CASCADE)
 
     def __unicode__(self):
         return self.name
