@@ -71,7 +71,7 @@ class Station(models.Model):
         urls = {}
         titles = {}
 
-        for line in response.read().splitlines():
+        for line in response.read().decode("utf-8").splitlines():
             line = line.lower()
 
             if re.match(pattern_file, line):
