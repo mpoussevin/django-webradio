@@ -41,19 +41,19 @@ def control_get_info(request):
 def control_play_station(request, station_id):
     station = get_object_or_404(Station, pk=station_id)
     station.play()
-    return HttpResponseRedirect(reverse('webradio.views.player'))
+    return HttpResponseRedirect(reverse('webradio:player'))
 
 def control_play_pause(request):
     p = get_player_instance()
     p.play_pause()
-    return HttpResponseRedirect(reverse('webradio.views.player'))
+    return HttpResponseRedirect(reverse('webradio:player'))
 
 def control_station_next(request):
     """
     Plays the next station.
     """
     if Station.objects.count() == 0:
-        return HttpResponseRedirect(reverse('webradio.views.player'))
+        return HttpResponseRedirect(reverse('webradio:player'))
     
     p = get_player_instance()
     current_station = p.get_current_station()
@@ -63,14 +63,14 @@ def control_station_next(request):
         next_station = Station.objects.all().order_by('id')[0]
     
     next_station.play()
-    return HttpResponseRedirect(reverse('webradio.views.player'))
+    return HttpResponseRedirect(reverse('webradio:player'))
 
 def control_station_previous(request):
     """
     Plays the previous station.
     """
     if Station.objects.count() == 0:
-        return HttpResponseRedirect(reverse('webradio.views.player'))
+        return HttpResponseRedirect(reverse('webradio:player'))
     
     p = get_player_instance()
     current_station = p.get_current_station()
@@ -80,4 +80,4 @@ def control_station_previous(request):
         previous_station = Station.objects.all().order_by('-id')[0]
     
     previous_station.play()
-    return HttpResponseRedirect(reverse('webradio.views.player'))
+    return HttpResponseRedirect(reverse('webradio:player'))
