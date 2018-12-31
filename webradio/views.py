@@ -36,7 +36,7 @@ def control_get_info(request):
         info['station'] = station.name
     
     info['is_playing'] = p.is_playing()
-    return HttpResponse(json.dumps(info), mimetype="application/json")
+    return HttpResponse(json.dumps(info), content_type="application/json")
 
 def control_play_station(request, station_id):
     station = get_object_or_404(Station, pk=station_id)
