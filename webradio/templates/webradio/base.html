@@ -1,3 +1,5 @@
+{% load static %}
+
 <!DOCTYPE html>
 <!--[if IE 8]>               <html class="no-js lt-ie9" lang="en"> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
@@ -6,9 +8,9 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width" />
   <title>WebRadio</title>
-  <link rel="stylesheet" href="{{STATIC_URL}}webradio/css/normalize.css" />
-  <link rel="stylesheet" href="{{STATIC_URL}}webradio/css/foundation.css" />
-  <script src="{{STATIC_URL}}webradio/js/vendor/custom.modernizr.js"></script>
+  <link rel="stylesheet" href="{% static "webradio/css/normalize.css" %}" />
+  <link rel="stylesheet" href="{% static "webradio/css/foundation.css" %}" />
+  <script src="{% static "webradio/js/vendor/custom.modernizr.js" %}"></script>
 </head>
 <body>
 <nav class="top-bar">
@@ -35,10 +37,10 @@
 
   <script>
   document.write('<script src=' +
-  ('__proto__' in {} ? '{{STATIC_URL}}webradio/js/vendor/zepto' : '{{STATIC_URL}}webradio/js/vendor/jquery') +
+  ('__proto__' in {} ? '{% static "webradio/js/vendor/zepto" %}' : '{% static "webradio/js/vendor/jquery" %}') +
   '.js><\/script>')
   </script>
-  <script src="{{STATIC_URL}}webradio/js/foundation.min.js"></script>
+  <script src="{% static "webradio/js/foundation.min.js" %}"></script>
   <script>
     $(document).foundation();
   </script>

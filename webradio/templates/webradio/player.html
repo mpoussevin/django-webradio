@@ -1,4 +1,5 @@
 {% extends "webradio/base.html" %}
+{% load static %}
 
 {% block content %}
 <div class="row">
@@ -8,9 +9,9 @@
       <p id="id_station" style="font-size: small; margin:0px;">* {{player.get_current_station.name}} *</p>
   </div>
   <div class="large-4 columns" style="white-space: nowrap; text-align: center;">
-      <a href="{% url "webradio:control_station_previous" %}"><img src="{{STATIC_URL}}webradio/img/64x64/station_previous.png" /></a>
-      <a href="{% url "webradio:control_play_pause" %}"><img id="id_img_playpause" src="{{STATIC_URL}}webradio/img/64x64/media-playback-start.png" alt="Play/Pause" /></a>
-      <a href="{% url "webradio:control_station_next" %}"><img src="{{STATIC_URL}}webradio/img/64x64/station_next.png" /></a>
+      <a href="{% url "webradio:control_station_previous" %}"><img src="{% static "webradio/img/64x64/station_previous.png" %}" /></a>
+      <a href="{% url "webradio:control_play_pause" %}"><img id="id_img_playpause" src="{% static "webradio/img/64x64/media-playback-start.png" %}" alt="Play/Pause" /></a>
+      <a href="{% url "webradio:control_station_next" %}"><img src="{% static "webradio/img/64x64/station_next.png" %}" /></a>
   </div>
 </div>
 
@@ -24,9 +25,9 @@
             $('#id_station').text('* ' + data.station + ' *');
             
             if (data.is_playing == true) {
-                $('#id_img_playpause').attr('src', '{{STATIC_URL}}webradio/img/64x64/media-playback-pause.png');
+                $('#id_img_playpause').attr('src', '{% static "webradio/img/64x64/media-playback-pause.png" %}');
             } else {
-                $('#id_img_playpause').attr('src', '{{STATIC_URL}}webradio/img/64x64/media-playback-start.png');
+                $('#id_img_playpause').attr('src', '{% static "webradio/img/64x64/media-playback-start.png" %}');
             }
         });
     }
