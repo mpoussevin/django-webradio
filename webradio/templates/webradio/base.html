@@ -14,16 +14,16 @@
 <nav class="top-bar">
   <ul class="title-area">
     <li class="name">
-      <h1><a href="{% url "webradio.views.index" %}">WebRadio</a></h1>
+      <h1><a href="{% url "webradio:home" %}">WebRadio</a></h1>
     </li>
     <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
   </ul>
   <section class="top-bar-section">
   <ul class="right">
       <li class="divider"></li>
-      <li><a href="{% url 'webradio_stations' %}">Stations</a></li>
+      <li><a href="{% url "webradio:stations" %}">Stations</a></li>
       <li class="divider"></li>
-      <li><a href="{% url 'webradio_player' %}">Now Playing</a></li>
+      <li><a href="{% url "webradio:player" %}">Now Playing</a></li>
       <li class="divider"></li>
       <li class="has-form"><a href="{% url 'admin:webradio_station_changelist' %}" class="button">Setup</a></li>
   </ul>

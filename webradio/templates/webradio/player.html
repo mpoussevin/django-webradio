@@ -8,9 +8,9 @@
       <p id="id_station" style="font-size: small; margin:0px;">* {{player.get_current_station.name}} *</p>
   </div>
   <div class="large-4 columns" style="white-space: nowrap; text-align: center;">
-      <a href="{% url 'webradio.views.control_station_previous' %}"><img src="{{STATIC_URL}}webradio/img/64x64/station_previous.png" /></a>
-      <a href="{% url 'webradio.views.control_play_pause' %}"><img id="id_img_playpause" src="{{STATIC_URL}}webradio/img/64x64/media-playback-start.png" alt="Play/Pause" /></a>
-      <a href="{% url 'webradio.views.control_station_next' %}"><img src="{{STATIC_URL}}webradio/img/64x64/station_next.png" /></a>
+      <a href="{% url "webradio:control_station_previous" %}"><img src="{{STATIC_URL}}webradio/img/64x64/station_previous.png" /></a>
+      <a href="{% url "webradio:control_play_pause" %}"><img id="id_img_playpause" src="{{STATIC_URL}}webradio/img/64x64/media-playback-start.png" alt="Play/Pause" /></a>
+      <a href="{% url "webradio:control_station_next" %}"><img src="{{STATIC_URL}}webradio/img/64x64/station_next.png" /></a>
   </div>
 </div>
 
@@ -19,7 +19,7 @@
 {% block script %}
 <script>
     function updateNowPlaying(){       
-        $.getJSON('{% url 'webradio.views.control_get_info' %}', function(data) {
+        $.getJSON('{% url "webradio:control_get_info" %}', function(data) {
             $('#id_now_playing').text(data.title);
             $('#id_station').text('* ' + data.station + ' *');
             
