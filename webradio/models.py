@@ -1,5 +1,6 @@
 import re
-import urllib2
+
+from urllib.request import urlopen
 from django.db import models
 from django.db.models.signals import post_save
 from django.dispatch import receiver
@@ -57,7 +58,7 @@ class Station(models.Model):
         """
         Loads and parses the playlist.
         """
-        response = urllib2.urlopen(self.playlist, timeout=10)
+        response = urlopen(self.playlist, timeout=10)
         if not response:
             return
     
