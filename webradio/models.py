@@ -22,6 +22,9 @@ class Category(models.Model):
     def __unicode__(self):
         return self.name
 
+    def __str__(self):
+        return self.name
+
     def get_stations(self):
         return Station.objects.filter(category=self)
 
@@ -39,6 +42,9 @@ class Station(models.Model):
         ordering = ['name']
 
     def __unicode__(self):
+        return self.name
+
+    def __str__(self):
         return self.name
 
     def get_default_stream(self):
@@ -115,6 +121,9 @@ class Stream(models.Model):
     station = models.ForeignKey(Station, on_delete=models.CASCADE)
 
     def __unicode__(self):
+        return self.name
+
+    def __str__(self):
         return self.name
 
     def clean(self):
