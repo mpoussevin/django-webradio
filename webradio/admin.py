@@ -1,9 +1,9 @@
 from django.contrib import admin
 from django.utils.translation import ugettext_lazy as _
 from webradio.models import Station, Category
-from webradio.forms import StationForm
 
 admin.site.register(Category)
+
 
 class StationCategoryFilter(admin.SimpleListFilter):
     title = _('Category')
@@ -22,7 +22,6 @@ class StationCategoryFilter(admin.SimpleListFilter):
 
 
 class StationAdmin(admin.ModelAdmin):
-    form = StationForm
     list_filter = (StationCategoryFilter,)
 
 
