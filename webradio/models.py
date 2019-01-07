@@ -113,7 +113,7 @@ class Station(models.Model):
 class Stream(models.Model):
     """
     A stream of a particular radio stations. Streams are discovered
-    automatically by parsing the plalist of a station.
+    automatically by parsing the playlist of a station.
     """
     name = models.CharField(max_length=100, default='')
     url = models.URLField(unique=True)
