@@ -1,0 +1,5 @@
+include LICENSE
+include README.md
+recursive-include webradio/static *
+recursive-include webradio/templates *
+recursive-include docs *
