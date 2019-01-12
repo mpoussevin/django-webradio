@@ -1,4 +1,4 @@
-from webradio.players.contrib import vlc
+import vlc
 from webradio.players import AbstractAudioPlayer
 
 META_TITLE = 0

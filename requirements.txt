@@ -1,0 +1,2 @@
+python-vlc==3.0.4106
+Django==2.1.5
